@@ -9,12 +9,6 @@ namespace Game.Controller
         public GameController(IGameView gameView)
         {
             _gameView = gameView;
-            _gameView.OnStartButtonClick += OnStartButtonClicked;
-        }
-
-        private void OnStartButtonClicked(int size, int colorCount, int playerCount)
-        {
-            
         }
     }
 }
