@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace Ball.View
+namespace BallGenerator.View
 {
-    public interface IBallView
+    public interface IBallGeneratorView
     {
         void OnGameStarted(int size, int colorCount);
     }
