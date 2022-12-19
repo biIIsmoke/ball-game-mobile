@@ -1,7 +1,6 @@
 using System;
 using BallGenerator.View;
 using Game.View;
-using UnityEngine;
 
 namespace BallGenerator.Controller
 {

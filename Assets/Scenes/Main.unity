@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 903325504}
   - component: {fileID: 903325503}
   m_Layer: 5
-  m_Name: BallView
+  m_Name: BallGeneratorView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -845,7 +845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameView: {fileID: 2076816843}
-  _ballView: {fileID: 903325503}
+  _ballGeneratorView: {fileID: 903325503}
+  _ballViewPrefab: {fileID: -2014385397307783097, guid: 1a6b9bb4d4ae0b6479e2ec71617e897c, type: 3}
 --- !u!114 &1648377853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,5 +1137,5 @@ MonoBehaviour:
   _panel: {fileID: 19688406}
   _startButton: {fileID: 1745044997}
   _size: 49
-  _colorCount: 6
+  _colorCount: 8
   _playerCount: 2

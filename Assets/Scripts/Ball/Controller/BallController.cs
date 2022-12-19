@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Ball.View;
+using Game.View;
 using UnityEngine;
 
-public class BallController : MonoBehaviour
+namespace Ball.Controller
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BallController : IDisposable
     {
-        
-    }
+        private IBallView _ballView;
+        private IGameView _gameView;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public BallController(
+            IBallView ballView,
+            IGameView gameView)
+        {
+            _ballView = ballView;
+            _gameView = gameView;
+            
+        }
+
+        public void Dispose()
+        {
+            
+        }
     }
 }
