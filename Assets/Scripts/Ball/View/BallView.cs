@@ -42,6 +42,10 @@ namespace Ball.View
             {
                 _rigidBody.velocity = (currentPos - transform.position)*10;
             }
+            else
+            {
+                _rigidBody.velocity = Vector3.zero;
+            }
         }
 
         private void OnMouseUp()
