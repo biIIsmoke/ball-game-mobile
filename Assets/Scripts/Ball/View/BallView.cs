@@ -6,8 +6,10 @@ namespace Ball.View
 {
     public class BallView : MonoBehaviour, IBallView
     {
+        [SerializeField] private Rigidbody _rigidBody;
         private Vector3 _startPos;
         private Vector3 _offset;
+        
         [Inject]
         public void Construct()
         {
@@ -29,6 +31,7 @@ namespace Ball.View
             //highlight the ball and put it in selected tuple
             _startPos = transform.position;
             _offset = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,.5f,Camera.main.ScreenToWorldPoint(Input.mousePosition).z) - _startPos;
+            _rigidBody.isKinematic = false;
         }
 
         private void OnMouseDrag()
@@ -37,14 +40,15 @@ namespace Ball.View
             Vector3 currentPos = GetMousePos() - _offset;
             if ((currentPos - _startPos).magnitude < 1)
             {
-                transform.position = currentPos;
+                _rigidBody.velocity = (currentPos - transform.position)*10;
             }
         }
 
         private void OnMouseUp()
         {
+            _rigidBody.isKinematic = true;
+            _rigidBody.velocity = Vector3.zero;
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), .5f, Mathf.RoundToInt(transform.position.z));
-            Debug.Log(transform.position);
         }
 
         private Vector3 GetMousePos()
