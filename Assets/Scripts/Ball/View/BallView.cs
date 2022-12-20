@@ -34,15 +34,16 @@ namespace Ball.View
         private void OnMouseDrag()
         {
             //only transform if it is within 1 unit from start
-            if ((GetMousePos() - _offset - _startPos).magnitude < 1)
+            Vector3 currentPos = GetMousePos() - _offset;
+            if ((currentPos - _startPos).magnitude < 1)
             {
-                transform.position = GetMousePos() - _offset;
+                transform.position = currentPos;
             }
         }
 
         private void OnMouseUp()
         {
-            transform.position = new Vector3((int)transform.position.x, .5f, (int)transform.position.z);
+            transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), .5f, Mathf.RoundToInt(transform.position.z));
             Debug.Log(transform.position);
         }
 
