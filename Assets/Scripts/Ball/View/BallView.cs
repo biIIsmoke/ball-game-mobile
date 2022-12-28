@@ -10,6 +10,9 @@ namespace Ball.View
         private Vector3 _startPos;
         private Vector3 _offset;
         
+        public event Action<GameObject> OnFirstBallSelect;
+        public event Action<GameObject> OnSecondBallSelect;
+        
         [Inject]
         public void Construct()
         {
@@ -42,7 +45,8 @@ namespace Ball.View
             {
                 _rigidBody.velocity = (currentPos - transform.position)*10;
             }
-            else
+
+            if ((_startPos - transform.position).magnitude > 1)
             {
                 _rigidBody.velocity = Vector3.zero;
             }
@@ -53,6 +57,15 @@ namespace Ball.View
             _rigidBody.isKinematic = true;
             _rigidBody.velocity = Vector3.zero;
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), .5f, Mathf.RoundToInt(transform.position.z));
+
+            if (transform.position != _startPos) //ball is moved so select it
+            {
+                OnFirstBallSelect?.Invoke(gameObject);
+            }
+            else
+            {
+                OnSecondBallSelect?.Invoke(gameObject);
+            }
         }
 
         private Vector3 GetMousePos()
