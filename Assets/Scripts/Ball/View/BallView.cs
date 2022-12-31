@@ -1,22 +1,22 @@
 using System;
+using Game.View;
 using UnityEngine;
 using Zenject;
 
 namespace Ball.View
 {
-    public class BallView : MonoBehaviour, IBallView
+    public class BallView : MonoBehaviour
     {
+        private IGameView _gameView;
+            
         [SerializeField] private Rigidbody _rigidBody;
         private Vector3 _startPos;
         private Vector3 _offset;
         
-        public event Action<GameObject> OnFirstBallSelect;
-        public event Action<GameObject> OnSecondBallSelect;
-        
         [Inject]
-        public void Construct()
+        public void Construct(IGameView gameView)
         {
-            
+            _gameView = gameView;
         }
 
         private void OnMouseDown()
@@ -50,11 +50,11 @@ namespace Ball.View
 
             if (transform.position != _startPos) //ball is moved so select it
             {
-                OnFirstBallSelect?.Invoke(gameObject);
+                _gameView.OnFirstBallSelect(gameObject);
             }
             else
             {
-                OnSecondBallSelect?.Invoke(gameObject);
+                _gameView.OnSecondBallSelect(gameObject);
             }
         }
 

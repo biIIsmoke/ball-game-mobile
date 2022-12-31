@@ -35,7 +35,7 @@ namespace BallGenerator.View
         {
             while (_pool.transform.childCount != size)
             {
-                BallView obj = _ballFactory.Create();
+                var obj = _ballFactory.Create();
                 obj.transform.SetParent(_pool.transform);
                 obj.gameObject.SetActive(false);
             }

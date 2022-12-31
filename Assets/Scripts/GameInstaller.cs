@@ -1,4 +1,3 @@
-using Ball.Controller;
 using Ball.View;
 using BallGenerator.Controller;
 using BallGenerator.View;

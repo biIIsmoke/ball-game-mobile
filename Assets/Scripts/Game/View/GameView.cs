@@ -9,7 +9,6 @@ namespace Game.View
 {
     public class GameView : MonoBehaviour, IGameView
     {
-        //TODO: instantiate balls using data taken from user
         [SerializeField] private GameObject _panel;
         [SerializeField] private Button _startButton;
         [SerializeField] private int _size = 49;
@@ -17,6 +16,8 @@ namespace Game.View
         [SerializeField] private int _playerCount = 2;
 
         public event Action<int, int> OnGameStart;
+        public event Action<GameObject> OnFirstBallSelected;
+        public event Action<GameObject> OnSecondBallSelected;
         
         [Inject]
         public void Construct()
@@ -44,6 +45,15 @@ namespace Game.View
         private void ActivatePlayers()
         {
             
+        }
+
+        public void OnFirstBallSelect(GameObject first)
+        {
+            OnFirstBallSelected?.Invoke(first);
+        }
+        public void OnSecondBallSelect(GameObject second)
+        {
+            OnSecondBallSelected?.Invoke(second);
         }
     }
 }
