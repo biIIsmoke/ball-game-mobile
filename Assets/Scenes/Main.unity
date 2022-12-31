@@ -846,7 +846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameView: {fileID: 2076816843}
   _ballGeneratorView: {fileID: 903325503}
-  _ballViewPrefab: {fileID: -2014385397307783097, guid: 1a6b9bb4d4ae0b6479e2ec71617e897c, type: 3}
+  _ballPrefab: {fileID: 3656174563343727728, guid: 1a6b9bb4d4ae0b6479e2ec71617e897c, type: 3}
 --- !u!114 &1648377853
 MonoBehaviour:
   m_ObjectHideFlags: 0

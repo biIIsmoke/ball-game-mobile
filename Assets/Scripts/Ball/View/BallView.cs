@@ -18,16 +18,6 @@ namespace Ball.View
         {
             
         }
-        
-        private void OnEnable()
-        {
-            
-        }
-
-        private void OnDisable()
-        {
-            
-        }
 
         private void OnMouseDown()
         {
@@ -75,14 +65,6 @@ namespace Ball.View
         }
 
         public class Factory : PlaceholderFactory<BallView>
-        {
-        }
-
-        public class PreviewFactory : PlaceholderFactory<BallView>
-        {
-        }
-
-        public class OpponentHandFactory : PlaceholderFactory<BallView>
         {
         }
     }

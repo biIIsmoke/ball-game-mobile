@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ball.View;
 using UnityEngine;
 using Zenject;
 
@@ -9,14 +10,15 @@ namespace BallGenerator.View
     {
         [SerializeField] private Color[] _colors = {Color.red, Color.green, Color.blue, Color.yellow, Color.grey, Color.magenta, Color.black, Color.cyan, Color.clear};
         [SerializeField] private GameObject _board;
-        [SerializeField] private GameObject _ball;
         [SerializeField] private GameObject _balls;
         [SerializeField] private GameObject _pool;
+
+        private BallView.Factory _ballFactory;
         
         [Inject]
-        public void Construct()
+        public void Construct(BallView.Factory ballFactory)
         {
-            
+            _ballFactory = ballFactory;
         }
         
         private void OnEnable()
@@ -33,8 +35,9 @@ namespace BallGenerator.View
         {
             while (_pool.transform.childCount != size)
             {
-                GameObject obj =  Instantiate(_ball, new Vector3(0,0,0),  Quaternion.identity, _pool.transform);
-                obj.SetActive(false);
+                BallView obj = _ballFactory.Create();
+                obj.transform.SetParent(_pool.transform);
+                obj.gameObject.SetActive(false);
             }
 
             GameObject board = Instantiate(_board, new Vector3(0, 0, 0), Quaternion.identity);
