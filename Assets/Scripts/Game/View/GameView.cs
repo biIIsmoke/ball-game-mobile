@@ -1,9 +1,8 @@
 using System;
-using System.Reflection;
+using Game.Repository;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
-using Random = UnityEngine.Random;
 
 namespace Game.View
 {
@@ -11,6 +10,7 @@ namespace Game.View
     {
         [SerializeField] private GameObject _panel;
         [SerializeField] private Button _startButton;
+        [SerializeField] private Button _nextButton;
         [SerializeField] private int _size = 49;
         [SerializeField] private int _colorCount = 6;
         [SerializeField] private int _playerCount = 2;
@@ -22,7 +22,6 @@ namespace Game.View
         [Inject]
         public void Construct()
         {
-            
         }
 
         private void OnEnable()

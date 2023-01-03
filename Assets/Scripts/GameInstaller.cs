@@ -2,6 +2,7 @@ using Ball.View;
 using BallGenerator.Controller;
 using BallGenerator.View;
 using Game.Controller;
+using Game.Repository;
 using UnityEngine;
 using Zenject;
 using Game.View;
@@ -14,6 +15,7 @@ public class GameInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<IGameView>().To<GameView>().FromInstance(_gameView).AsSingle();
+        Container.Bind<IGameRepository>().To<GameRepository>().AsSingle();
         Container.Bind<IBallGeneratorView>().To<BallGeneratorView>().FromInstance(_ballGeneratorView).AsSingle();
         
         Container.Bind<GameController>().AsSingle().NonLazy();

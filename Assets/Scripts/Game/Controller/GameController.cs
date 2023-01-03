@@ -1,3 +1,4 @@
+using Game.Repository;
 using Game.View;
 using UnityEngine;
 
@@ -6,10 +7,13 @@ namespace Game.Controller
     public class GameController
     {
         private IGameView _gameView;
-
-        public GameController(IGameView gameView)
+        private IGameRepository _gameRepository;
+        
+        public GameController(IGameView gameView,
+            IGameRepository gameRepository)
         {
             _gameView = gameView;
+            _gameRepository = gameRepository;
 
             _gameView.OnFirstBallSelected += OnFirstBallSelected;
             _gameView.OnSecondBallSelected += OnSecondBallSelected;
@@ -23,11 +27,17 @@ namespace Game.Controller
 
         private void OnFirstBallSelected(GameObject first)
         {
-            Debug.Log($"First Ball Selected has a color {first.GetComponent<Renderer>().material.color}");
+            if (_gameRepository.SetFirstBall(first))
+            {
+                Debug.Log($"First Ball Selected has a color {first.GetComponent<Renderer>().material.color}");
+            }
         }
         private void OnSecondBallSelected(GameObject second)
         {
-            Debug.Log($"Second Ball Selected has a color {second.GetComponent<Renderer>().material.color}");
+            if (_gameRepository.SetSecondBall(second))
+            {
+                Debug.Log($"Second Ball Selected has a color {second.GetComponent<Renderer>().material.color}");
+            }
         }
     }
 }
