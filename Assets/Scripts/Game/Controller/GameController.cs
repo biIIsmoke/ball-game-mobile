@@ -15,27 +15,44 @@ namespace Game.Controller
             _gameView = gameView;
             _gameRepository = gameRepository;
 
+            _gameView.OnNextButtonClick += OnNextButtonClicked;
             _gameView.OnFirstBallSelected += OnFirstBallSelected;
             _gameView.OnSecondBallSelected += OnSecondBallSelected;
         }
 
         public void Dispose()
         {
+            _gameView.OnNextButtonClick -= OnNextButtonClicked;
             _gameView.OnFirstBallSelected -= OnFirstBallSelected;
             _gameView.OnSecondBallSelected -= OnSecondBallSelected;
         }
 
-        private void OnFirstBallSelected(GameObject first)
+        private void OnNextButtonClicked(int playerCount)
         {
-            if (_gameRepository.FirstBall = first)
+            if (_gameRepository.ActivePlayerIndex + 1 == playerCount)
             {
+                _gameRepository.ActivePlayerIndex = 0;
+            }
+            else
+            {
+                _gameRepository.ActivePlayerIndex++;
+            }
+            Debug.Log(_gameRepository.ActivePlayerIndex);
+        }
+        
+        private void OnFirstBallSelected(GameObject first)
+        { 
+            if (_gameRepository.FirstBall == null)
+            {
+                _gameRepository.FirstBall = first;
                 Debug.Log($"First Ball Selected has a color {first.GetComponent<Renderer>().material.color}");
             }
         }
         private void OnSecondBallSelected(GameObject second)
         {
-            if (_gameRepository.SecondBall = second)
+            if (_gameRepository.FirstBall != null && _gameRepository.SecondBall == null && second != _gameRepository.FirstBall)
             {
+                _gameRepository.SecondBall = second;
                 Debug.Log($"Second Ball Selected has a color {second.GetComponent<Renderer>().material.color}");
             }
         }

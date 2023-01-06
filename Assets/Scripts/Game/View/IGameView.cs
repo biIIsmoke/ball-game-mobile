@@ -6,6 +6,7 @@ namespace Game.View
     public interface IGameView
     {
         event Action<int, int> OnGameStart;
+        event Action<int> OnNextButtonClick;
         event Action<GameObject> OnFirstBallSelected;
         event Action<GameObject> OnSecondBallSelected;
 

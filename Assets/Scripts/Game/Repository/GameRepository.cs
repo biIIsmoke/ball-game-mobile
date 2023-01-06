@@ -5,7 +5,6 @@ namespace Game.Repository
 {
     public class GameRepository : IGameRepository
     {
-        //TODO: Use { get; set; } , ditch the functions
         public GameObject FirstBall { get; set; }
         public GameObject SecondBall { get; set; }
         public List<int> Scores { get; set; }
