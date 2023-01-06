@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Repository
 {
     public interface IGameRepository
     {
-        bool SetFirstBall(GameObject first);
-        GameObject GetFirstBall();
-        bool SetSecondBall(GameObject second);
-        GameObject GetSecondBall();
+        GameObject FirstBall { get; set; }
+        GameObject SecondBall { get; set; }
+        List<int> Scores { get; set; }
+        int ActivePlayerIndex { get; set; }
     }
 }

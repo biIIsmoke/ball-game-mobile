@@ -27,14 +27,14 @@ namespace Game.Controller
 
         private void OnFirstBallSelected(GameObject first)
         {
-            if (_gameRepository.SetFirstBall(first))
+            if (_gameRepository.FirstBall = first)
             {
                 Debug.Log($"First Ball Selected has a color {first.GetComponent<Renderer>().material.color}");
             }
         }
         private void OnSecondBallSelected(GameObject second)
         {
-            if (_gameRepository.SetSecondBall(second))
+            if (_gameRepository.SecondBall = second)
             {
                 Debug.Log($"Second Ball Selected has a color {second.GetComponent<Renderer>().material.color}");
             }
