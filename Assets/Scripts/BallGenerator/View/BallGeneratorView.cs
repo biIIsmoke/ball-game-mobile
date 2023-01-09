@@ -28,24 +28,7 @@ namespace BallGenerator.View
         {
             
         }
-
-        public void OnGameStarted(int size, int colorCount)
-        {
-            while (_pool.transform.childCount != size)
-            {
-                var obj = _ballFactory.Create();
-                obj.transform.SetParent(_pool.transform);
-                obj.gameObject.SetActive(false);
-            }
-
-            GameObject board = Instantiate(_board, new Vector3(0, 0, 0), Quaternion.identity);
-            float boardSize = Mathf.Sqrt(size)/10;
-            board.transform.localScale = new Vector3(boardSize,1,boardSize);
-
-            ColorGenerator(size, colorCount);
-            PlaceBalls(boardSize*10);
-        }
-
+        
         private void ColorGenerator(int size, int colorCount)
         {
             for (int i = 0; i < colorCount; i++)
@@ -81,6 +64,30 @@ namespace BallGenerator.View
                     }
                 }
             }
+        }
+        public void OnGameStarted(int size, int colorCount, int playerCount)
+        {
+            while (_pool.transform.childCount != size)
+            {
+                var obj = _ballFactory.Create();
+                obj.transform.SetParent(_pool.transform);
+                obj.gameObject.SetActive(false);
+            }
+
+            GameObject board = Instantiate(_board, new Vector3(0, 0, 0), Quaternion.identity);
+            float boardSize = Mathf.Sqrt(size)/10;
+            board.transform.localScale = new Vector3(boardSize,1,boardSize);
+
+            ColorGenerator(size, colorCount);
+            PlaceBalls(boardSize*10);
+        }
+
+        public void HideBalls(GameObject first, GameObject second)
+        {
+            first.transform.SetParent(_pool.transform);
+            first.SetActive(false);
+            second.transform.SetParent(_pool.transform);
+            second.SetActive(false);
         }
     }
 }

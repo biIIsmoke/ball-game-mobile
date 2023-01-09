@@ -10,12 +10,17 @@ namespace Game.Repository
         public List<int> Scores { get; set; }
         public int ActivePlayerIndex { get; set; }
 
-        public GameRepository()
+        public void Reset(int playerCount)
         {
             FirstBall = null;
             SecondBall = null;
-            //add 0 to Scores list for each player
             ActivePlayerIndex = 0;
+
+            Scores = new List<int>();
+            for (int i = 0; i < playerCount; i++)
+            {
+                Scores.Add(0);
+            }
         }
     }
 }

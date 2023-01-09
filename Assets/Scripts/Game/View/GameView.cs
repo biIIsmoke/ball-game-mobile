@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.Repository;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,14 +19,16 @@ namespace Game.View
         [SerializeField] private int _colorCount = 6;
         [SerializeField] private int _playerCount = 2;
 
-        public event Action<int, int> OnGameStart;
+        private IGameRepository _gameRepository;
+        public event Action<int, int, int> OnGameStart;
         public event Action<int> OnNextButtonClick;
         public event Action<GameObject> OnFirstBallSelected;
         public event Action<GameObject> OnSecondBallSelected;
         
         [Inject]
-        public void Construct()
+        public void Construct(IGameRepository gameRepository)
         {
+            _gameRepository = gameRepository;
         }
 
         private void OnEnable()
@@ -41,26 +44,25 @@ namespace Game.View
         }
         private void OnStartButtonClicked()
         {
-            OnGameStart?.Invoke(_size, _colorCount);
+            OnGameStart?.Invoke(_size, _colorCount, _playerCount);
             
             ActivatePlayers();
             _mainPanel.SetActive(false);
             _inGamePanel.SetActive(true);
         }
-
-        private void OnNextButtonClicked()
-        {
-            OnNextButtonClick?.Invoke(_playerCount);
-        }
         
         private void ActivatePlayers()
         {
-            //TODO: creates player tags and score table for them and initializes score list
             for (int i = 0; i < _playerCount; i++)
             {
                 var score = _scores[i];
                 score.SetActive(true);
             }
+        }
+
+        public void OnNextButtonClicked()
+        {
+            OnNextButtonClick?.Invoke(_playerCount);
         }
 
         public void OnFirstBallSelect(GameObject first)
@@ -70,6 +72,12 @@ namespace Game.View
         public void OnSecondBallSelect(GameObject second)
         {
             OnSecondBallSelected?.Invoke(second);
+        }
+
+        public void UpdateScoreText()
+        {
+            Debug.Log($"Score is: {_gameRepository.Scores[_gameRepository.ActivePlayerIndex]}");
+            _scores[_gameRepository.ActivePlayerIndex].transform.GetChild(0).GetComponent<TMP_Text>().text = _gameRepository.Scores[_gameRepository.ActivePlayerIndex].ToString();
         }
     }
 }

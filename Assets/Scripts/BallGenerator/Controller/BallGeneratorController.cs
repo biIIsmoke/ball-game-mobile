@@ -24,9 +24,9 @@ namespace BallGenerator.Controller
             _gameView.OnGameStart -= OnGameStarted;
         }
 
-        private void OnGameStarted(int size, int colorCount)
+        private void OnGameStarted(int size, int colorCount, int playerCount)
         {
-            _ballView.OnGameStarted(size, colorCount);
+            _ballView.OnGameStarted(size, colorCount, playerCount);
         }
         
     }

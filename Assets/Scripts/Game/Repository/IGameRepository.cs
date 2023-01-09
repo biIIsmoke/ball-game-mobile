@@ -9,5 +9,7 @@ namespace Game.Repository
         GameObject SecondBall { get; set; }
         List<int> Scores { get; set; }
         int ActivePlayerIndex { get; set; }
+
+        void Reset(int playerCount);
     }
 }
