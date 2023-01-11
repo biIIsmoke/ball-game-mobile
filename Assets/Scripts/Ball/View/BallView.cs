@@ -1,4 +1,5 @@
 using System;
+using Game.Repository;
 using Game.View;
 using UnityEngine;
 using Zenject;
@@ -8,15 +9,18 @@ namespace Ball.View
     public class BallView : MonoBehaviour
     {
         private IGameView _gameView;
+        private IGameRepository _gameRepository;
             
         [SerializeField] private Rigidbody _rigidBody;
         private Vector3 _startPos;
         private Vector3 _offset;
         
         [Inject]
-        public void Construct(IGameView gameView)
+        public void Construct(IGameView gameView,
+            IGameRepository gameRepository)
         {
             _gameView = gameView;
+            _gameRepository = gameRepository;
         }
 
         private void OnMouseDown()
@@ -54,7 +58,10 @@ namespace Ball.View
             }
             else
             {
-                _gameView.OnSecondBallSelect(gameObject);
+                if (_gameRepository.FirstBall != null)
+                {
+                    _gameView.OnSecondBallSelect(gameObject);
+                }
             }
         }
 
