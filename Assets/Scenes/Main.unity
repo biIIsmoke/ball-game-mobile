@@ -791,8 +791,8 @@ RectTransform:
   m_Children:
   - {fileID: 1247545021}
   - {fileID: 2084336771}
-  - {fileID: 1450171886}
   - {fileID: 1215758807}
+  - {fileID: 1450171886}
   - {fileID: 1795816810}
   m_Father: {fileID: 2076816842}
   m_RootOrder: 1
@@ -906,7 +906,7 @@ GameObject:
   - component: {fileID: 1215758809}
   - component: {fileID: 1215758808}
   m_Layer: 5
-  m_Name: Score 3
+  m_Name: Score 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -926,7 +926,7 @@ RectTransform:
   m_Children:
   - {fileID: 1823558557}
   m_Father: {fileID: 957433315}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8, y: 0.9}
   m_AnchorMax: {x: 1, y: 1}
@@ -1510,7 +1510,7 @@ GameObject:
   - component: {fileID: 1450171888}
   - component: {fileID: 1450171887}
   m_Layer: 5
-  m_Name: Score 2
+  m_Name: Score 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1530,7 +1530,7 @@ RectTransform:
   m_Children:
   - {fileID: 1243270333}
   m_Father: {fileID: 957433315}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.9}
   m_AnchorMax: {x: 0.2, y: 1}
@@ -2144,13 +2144,13 @@ MonoBehaviour:
   _startButton: {fileID: 1745044997}
   _scores:
   - {fileID: 2084336770}
-  - {fileID: 1450171885}
   - {fileID: 1215758806}
+  - {fileID: 1450171885}
   - {fileID: 1795816809}
   _nextButton: {fileID: 1247545022}
   _size: 49
   _colorCount: 8
-  _playerCount: 2
+  _playerCount: 3
 --- !u!1 &2080145320
 GameObject:
   m_ObjectHideFlags: 0

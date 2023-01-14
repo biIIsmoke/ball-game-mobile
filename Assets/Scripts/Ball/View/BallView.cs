@@ -8,6 +8,7 @@ namespace Ball.View
 {
     public class BallView : MonoBehaviour
     {
+        private Camera _camera;
         private IGameView _gameView;
         private IGameRepository _gameRepository;
             
@@ -19,21 +20,21 @@ namespace Ball.View
         public void Construct(IGameView gameView,
             IGameRepository gameRepository)
         {
+            _camera = Camera.main;
             _gameView = gameView;
             _gameRepository = gameRepository;
         }
 
         private void OnMouseDown()
         {
-            //highlight the ball and put it in selected tuple
+            Vector3 cameraVector = _camera.ScreenToWorldPoint(Input.mousePosition);
             _startPos = transform.position;
-            _offset = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,.5f,Camera.main.ScreenToWorldPoint(Input.mousePosition).z) - _startPos;
+            _offset = new Vector3(cameraVector.x,.5f,cameraVector.z) - _startPos;
             _rigidBody.isKinematic = false;
         }
 
         private void OnMouseDrag()
         {
-            //only transform if it is within 1 unit from start
             Vector3 currentPos = GetMousePos() - _offset;
             if ((currentPos - _startPos).magnitude < 1)
             {
@@ -50,9 +51,10 @@ namespace Ball.View
         {
             _rigidBody.isKinematic = true;
             _rigidBody.velocity = Vector3.zero;
-            transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), .5f, Mathf.RoundToInt(transform.position.z));
+            Vector3 currentPos = transform.position;
+            transform.position = new Vector3(Mathf.RoundToInt(currentPos.x), .5f, Mathf.RoundToInt(currentPos.z));
 
-            if (transform.position != _startPos) //ball is moved so select it
+            if (transform.position != _startPos)
             {
                 _gameView.OnFirstBallSelect(gameObject);
             }
@@ -67,7 +69,8 @@ namespace Ball.View
 
         private Vector3 GetMousePos()
         {
-            Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,.5f,Camera.main.ScreenToWorldPoint(Input.mousePosition).z);
+            Vector3 cameraVector = _camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePos = new Vector3(cameraVector.x,.5f,cameraVector.z);
             return mousePos;
         }
 

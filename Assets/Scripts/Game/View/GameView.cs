@@ -58,6 +58,17 @@ namespace Game.View
                 var score = _scores[i];
                 score.SetActive(true);
             }
+
+            var player2 = _scores[1].transform.GetChild(0);
+            
+            if (_playerCount == 2)
+            {
+                player2.transform.eulerAngles = new Vector3(0, 0, 180);
+            }
+            else
+            {
+                player2.transform.eulerAngles = new Vector3(0, 0, 90);
+            }
         }
 
         public void OnNextButtonClicked()
