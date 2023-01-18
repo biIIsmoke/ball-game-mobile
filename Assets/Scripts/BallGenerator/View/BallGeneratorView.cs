@@ -1,6 +1,9 @@
+using System;
 using Ball.View;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace BallGenerator.View
 {
@@ -18,7 +21,7 @@ namespace BallGenerator.View
         {
             _ballFactory = ballFactory;
         }
-        
+
         private void OnEnable()
         {
             
@@ -73,11 +76,10 @@ namespace BallGenerator.View
                 obj.transform.SetParent(_pool.transform);
                 obj.gameObject.SetActive(false);
             }
-
-            GameObject board = Instantiate(_board, new Vector3(0, 0, 0), Quaternion.identity);
             float boardSize = Mathf.Sqrt(size)/10;
-            board.transform.localScale = new Vector3(boardSize,1,boardSize);
-
+            _board.transform.localScale = new Vector3(boardSize,1,boardSize);
+            _board.SetActive(true);
+            
             ColorGenerator(size, colorCount);
             PlaceBalls(boardSize*10);
         }
