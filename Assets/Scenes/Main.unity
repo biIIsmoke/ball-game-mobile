@@ -907,6 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6a64b6e4c40ce4eaa2960c471f6a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boardTransform: {fileID: 1085874458}
   _boardMeshRenderer: {fileID: 1085874456}
 --- !u!1001 &1085874453
 PrefabInstance:
@@ -977,6 +978,11 @@ GameObject:
 --- !u!23 &1085874456 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2183010169118831589, guid: b25031d11d0a0d749ab5de2c85f1871f, type: 3}
+  m_PrefabInstance: {fileID: 1085874453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1085874458 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2183010169118831591, guid: b25031d11d0a0d749ab5de2c85f1871f, type: 3}
   m_PrefabInstance: {fileID: 1085874453}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1215758806
@@ -2233,7 +2239,7 @@ MonoBehaviour:
   - {fileID: 1450171885}
   - {fileID: 1795816809}
   _nextButton: {fileID: 1247545022}
-  _size: 121
+  _size: 49
   _colorCount: 8
   _playerCount: 3
 --- !u!1 &2080145320

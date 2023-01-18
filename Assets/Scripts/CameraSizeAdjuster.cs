@@ -6,6 +6,7 @@ using Zenject;
 
 public class CameraSizeAdjuster : MonoBehaviour
 {
+    [SerializeField]private Transform _boardTransform;
     [SerializeField]private MeshRenderer _boardMeshRenderer;
     private Camera _camera;
 
@@ -16,6 +17,6 @@ public class CameraSizeAdjuster : MonoBehaviour
 
     void Update()
     {
-        _camera.orthographicSize = (_boardMeshRenderer.bounds.size.x + 1) * Screen.height / Screen.width * 0.5f;
+        _camera.orthographicSize = (_boardMeshRenderer.bounds.size.x + _boardTransform.localScale.x) * Screen.height / Screen.width * 0.5f;
     }
 }
