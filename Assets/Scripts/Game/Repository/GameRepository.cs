@@ -9,7 +9,11 @@ namespace Game.Repository
         public GameObject SecondBall { get; set; }
         public List<int> Scores { get; set; }
         public int ActivePlayerIndex { get; set; }
-
+        
+        //TODO: modify these to remember stuff
+        public int BoardSize { get; set; }
+        public int ColorCount { get; set; }
+        public int PlayerCount { get; set; }
         public void Reset(int playerCount)
         {
             FirstBall = null;

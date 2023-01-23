@@ -15,6 +15,8 @@ namespace Game.View
         [SerializeField] private Button _startButton;
         [SerializeField] private List<GameObject> _scores;
         [SerializeField] private Button _nextButton;
+        
+        //TODO: size, colorcount, playercount fields to change repository
         [SerializeField] private int _size = 49;
         [SerializeField] private int _colorCount = 6;
         [SerializeField] private int _playerCount = 2;
