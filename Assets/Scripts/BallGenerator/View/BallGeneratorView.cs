@@ -83,6 +83,18 @@ namespace BallGenerator.View
             ColorGenerator(size, colorCount);
             PlaceBalls(boardSize*10);
         }
+        
+        public void OnMainMenuButtonClicked()
+        {
+            _board.SetActive(false);
+            while (_balls.transform.childCount > 0)
+            {
+                var ball = _balls.transform.GetChild(0);
+                ball.gameObject.SetActive(false);
+                ball.transform.SetParent(_pool.transform);
+                ball.GetComponent<Renderer>().material.color = Color.white;
+            }
+        }
 
         public void HideBalls(GameObject first, GameObject second)
         {

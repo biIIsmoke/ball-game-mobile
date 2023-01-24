@@ -6,17 +6,19 @@ namespace BallGenerator.Controller
 {
     public class BallGeneratorController : IDisposable
     {
-        private IBallGeneratorView _ballView;
+        private IBallGeneratorView _ballGeneratorView;
         private IGameView _gameView;
 
         public BallGeneratorController(
-            IBallGeneratorView ballView,
+            IBallGeneratorView ballGeneratorView,
             IGameView gameView)
         {
-            _ballView = ballView;
+            _ballGeneratorView = ballGeneratorView;
             _gameView = gameView;
 
             _gameView.OnGameStart += OnGameStarted;
+            _gameView.OnRestartButtonClick += OnRestartButtonClicked;
+            _gameView.OnMainMenuButtonClick += OnMainMenuButtonClicked;
         }
 
         public void Dispose()
@@ -26,7 +28,18 @@ namespace BallGenerator.Controller
 
         private void OnGameStarted(int size, int colorCount, int playerCount)
         {
-            _ballView.OnGameStarted(size, colorCount, playerCount);
+            _ballGeneratorView.OnGameStarted(size, colorCount, playerCount);
+        }
+
+        private void OnRestartButtonClicked()
+        {
+            OnMainMenuButtonClicked();
+            _gameView.OnStartButtonClicked();
+        }
+        
+        private void OnMainMenuButtonClicked()
+        {
+            _ballGeneratorView.OnMainMenuButtonClicked();
         }
         
     }

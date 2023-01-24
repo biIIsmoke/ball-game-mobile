@@ -3415,6 +3415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainPanel: {fileID: 19688406}
   _inGamePanel: {fileID: 957433314}
+  _MenuPanel: {fileID: 774155297}
   _startButton: {fileID: 1745044997}
   _scores:
   - {fileID: 2084336770}
@@ -3422,6 +3423,10 @@ MonoBehaviour:
   - {fileID: 1450171885}
   - {fileID: 1795816809}
   _nextButton: {fileID: 1247545022}
+  _menuButton: {fileID: 100472730}
+  _backButton: {fileID: 837627784}
+  _restartButton: {fileID: 1339809677}
+  _mainMenuButton: {fileID: 1023871333}
   _size: 49
   _colorCount: 8
   _playerCount: 4
