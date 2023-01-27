@@ -25,7 +25,7 @@ namespace Game.View
         [SerializeField] private int _size = 49;
         [SerializeField] private int _colorCount = 6;
         [SerializeField] private int _playerCount = 2;
-
+        
         private IGameRepository _gameRepository;
         public event Action<int, int, int> OnGameStart;
         public event Action<int> OnNextButtonClick;
@@ -106,18 +106,20 @@ namespace Game.View
         public void OnStartButtonClicked()
         {
             OnGameStart?.Invoke(_size, _colorCount, _playerCount);
-            
+            _gameRepository.IsMovable = true;
             ActivatePlayers();
             _mainPanel.SetActive(false);
             _inGamePanel.SetActive(true);
         }
         public void OnNextButtonClicked()
         {
+            _gameRepository.IsMovable = true;
             OnNextButtonClick?.Invoke(_playerCount);
         }
 
         public void OnFirstBallSelect(GameObject first)
         {
+            _gameRepository.IsMovable = false;
             OnFirstBallSelected?.Invoke(first);
         }
         public void OnSecondBallSelect(GameObject second)

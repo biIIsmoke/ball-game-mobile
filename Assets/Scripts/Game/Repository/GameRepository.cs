@@ -9,6 +9,7 @@ namespace Game.Repository
         public GameObject SecondBall { get; set; }
         public List<int> Scores { get; set; }
         public int ActivePlayerIndex { get; set; }
+        public bool IsMovable { get; set; }
         
         //TODO: modify these to remember stuff
         public int BoardSize { get; set; }
@@ -19,6 +20,7 @@ namespace Game.Repository
             FirstBall = null;
             SecondBall = null;
             ActivePlayerIndex = 0;
+            IsMovable = true;
 
             Scores = new List<int>();
             for (int i = 0; i < playerCount; i++)

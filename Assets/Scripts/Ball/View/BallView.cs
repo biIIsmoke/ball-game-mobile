@@ -35,6 +35,10 @@ namespace Ball.View
 
         private void OnMouseDrag()
         {
+            if (_gameRepository.IsMovable == false)
+            {
+                return;
+            }
             Vector3 currentPos = GetMousePos() - _offset;
             if ((currentPos - _startPos).magnitude < 1)
             {
