@@ -1,5 +1,7 @@
 using System;
 using Ball.View;
+using Game.Repository;
+using Navigation.View;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
@@ -15,11 +17,14 @@ namespace BallGenerator.View
         [SerializeField] private GameObject _pool;
 
         private BallView.Factory _ballFactory;
+        private IGameRepository _gameRepository;
         
         [Inject]
-        public void Construct(BallView.Factory ballFactory)
+        public void Construct(BallView.Factory ballFactory,
+            IGameRepository gameRepository)
         {
             _ballFactory = ballFactory;
+            _gameRepository = gameRepository;
         }
 
         private void OnEnable()
@@ -68,19 +73,19 @@ namespace BallGenerator.View
                 }
             }
         }
-        public void OnGameStarted(int size, int colorCount, int playerCount)
+        public void OnGameStarted()
         {
-            while (_pool.transform.childCount != size)
+            while (_pool.transform.childCount != _gameRepository.BoardSize)
             {
                 var obj = _ballFactory.Create();
                 obj.transform.SetParent(_pool.transform);
                 obj.gameObject.SetActive(false);
             }
-            float boardSize = Mathf.Sqrt(size)/10;
+            float boardSize = Mathf.Sqrt(_gameRepository.BoardSize)/10;
             _board.transform.localScale = new Vector3(boardSize,1,boardSize);
             _board.SetActive(true);
             
-            ColorGenerator(size, colorCount);
+            ColorGenerator(_gameRepository.BoardSize, _gameRepository.ColorCount);
             PlaceBalls(boardSize*10);
         }
         

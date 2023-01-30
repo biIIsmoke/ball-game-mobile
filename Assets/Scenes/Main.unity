@@ -936,6 +936,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d645067cc273043408298bdf120a747a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainPanel: {fileID: 19688406}
+  _inGamePanel: {fileID: 957433314}
+  _MenuPanel: {fileID: 774155297}
+  _startButton: {fileID: 1745044997}
+  _menuButton: {fileID: 100472730}
+  _backButton: {fileID: 837627784}
+  _restartButton: {fileID: 1339809677}
+  _mainMenuButton: {fileID: 1023871333}
 --- !u!224 &618851432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4238,23 +4246,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae083a53ed007c54f8dd46c40e13033f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainPanel: {fileID: 19688406}
-  _inGamePanel: {fileID: 957433314}
-  _MenuPanel: {fileID: 774155297}
-  _startButton: {fileID: 1745044997}
   _scores:
   - {fileID: 2084336770}
   - {fileID: 1215758806}
   - {fileID: 1450171885}
   - {fileID: 1795816809}
   _nextButton: {fileID: 1247545022}
-  _menuButton: {fileID: 100472730}
-  _backButton: {fileID: 837627784}
-  _restartButton: {fileID: 1339809677}
-  _mainMenuButton: {fileID: 1023871333}
-  _size: 49
-  _colorCount: 8
-  _playerCount: 4
 --- !u!1 &2084336770
 GameObject:
   m_ObjectHideFlags: 0

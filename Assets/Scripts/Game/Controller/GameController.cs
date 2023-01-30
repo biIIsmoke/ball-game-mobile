@@ -1,6 +1,7 @@
 using BallGenerator.View;
 using Game.Repository;
 using Game.View;
+using Navigation.View;
 using UnityEngine;
 
 namespace Game.Controller
@@ -10,16 +11,19 @@ namespace Game.Controller
         private IGameView _gameView;
         private IGameRepository _gameRepository;
         private IBallGeneratorView _ballGeneratorView;
+        private INavigationView _navigationView;
         
         public GameController(IGameView gameView,
             IGameRepository gameRepository,
-            IBallGeneratorView ballGeneratorView)
+            IBallGeneratorView ballGeneratorView,
+            INavigationView navigationView)
         {
             _gameView = gameView;
+            _navigationView = navigationView;
             _gameRepository = gameRepository;
             _ballGeneratorView = ballGeneratorView;
             
-            _gameView.OnGameStart += OnGameStarted;
+            _navigationView.OnGameStart += OnGameStarted;
             _gameView.OnNextButtonClick += OnNextButtonClicked;
             _gameView.OnFirstBallSelected += OnFirstBallSelected;
             _gameView.OnSecondBallSelected += OnSecondBallSelected;
@@ -27,20 +31,21 @@ namespace Game.Controller
 
         public void Dispose()
         {
-            _gameView.OnGameStart += OnGameStarted;
+            _navigationView.OnGameStart += OnGameStarted;
             _gameView.OnNextButtonClick -= OnNextButtonClicked;
             _gameView.OnFirstBallSelected -= OnFirstBallSelected;
             _gameView.OnSecondBallSelected -= OnSecondBallSelected;
         }
 
-        private void OnGameStarted(int size, int colorCount, int playerCount)
+        private void OnGameStarted()
         {
-            _gameRepository.Reset(playerCount);
+            _gameRepository.Reset();
+            _gameView.OnGameStarted();
         }
         
-        private void OnNextButtonClicked(int playerCount)
+        private void OnNextButtonClicked()
         {
-            if (_gameRepository.ActivePlayerIndex + 1 == playerCount)
+            if (_gameRepository.ActivePlayerIndex + 1 == _gameRepository.PlayerCount)
             {
                 _gameRepository.ActivePlayerIndex = 0;
             }

@@ -1,40 +1,43 @@
 using System;
 using BallGenerator.View;
 using Game.View;
+using Navigation.View;
 
 namespace BallGenerator.Controller
 {
     public class BallGeneratorController : IDisposable
     {
         private IBallGeneratorView _ballGeneratorView;
-        private IGameView _gameView;
+        private INavigationView _navigationView;
 
         public BallGeneratorController(
             IBallGeneratorView ballGeneratorView,
-            IGameView gameView)
+            INavigationView navigationView)
         {
             _ballGeneratorView = ballGeneratorView;
-            _gameView = gameView;
+            _navigationView = navigationView;
 
-            _gameView.OnGameStart += OnGameStarted;
-            _gameView.OnRestartButtonClick += OnRestartButtonClicked;
-            _gameView.OnMainMenuButtonClick += OnMainMenuButtonClicked;
+            _navigationView.OnGameStart += OnGameStarted;
+            _navigationView.OnRestartButtonClick += OnRestartButtonClicked;
+            _navigationView.OnMainMenuButtonClick += OnMainMenuButtonClicked;
         }
 
         public void Dispose()
         {
-            _gameView.OnGameStart -= OnGameStarted;
+            _navigationView.OnGameStart -= OnGameStarted;
+            _navigationView.OnRestartButtonClick -= OnRestartButtonClicked;
+            _navigationView.OnMainMenuButtonClick -= OnMainMenuButtonClicked;
         }
 
-        private void OnGameStarted(int size, int colorCount, int playerCount)
+        private void OnGameStarted()
         {
-            _ballGeneratorView.OnGameStarted(size, colorCount, playerCount);
+            _ballGeneratorView.OnGameStarted();
         }
 
         private void OnRestartButtonClicked()
         {
             OnMainMenuButtonClicked();
-            _gameView.OnStartButtonClicked();
+            _navigationView.OnStartButtonClicked();
         }
         
         private void OnMainMenuButtonClicked()

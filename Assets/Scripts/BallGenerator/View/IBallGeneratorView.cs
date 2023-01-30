@@ -5,7 +5,7 @@ namespace BallGenerator.View
 {
     public interface IBallGeneratorView
     {
-        void OnGameStarted(int size, int colorCount, int playerCount);
+        void OnGameStarted();
         void OnMainMenuButtonClicked();
         void HideBalls(GameObject first, GameObject second);
     }

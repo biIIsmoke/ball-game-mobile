@@ -15,15 +15,18 @@ namespace Game.Repository
         public int BoardSize { get; set; }
         public int ColorCount { get; set; }
         public int PlayerCount { get; set; }
-        public void Reset(int playerCount)
+        public void Reset()
         {
             FirstBall = null;
             SecondBall = null;
             ActivePlayerIndex = 0;
             IsMovable = true;
+            BoardSize = 49;
+            ColorCount = 6;
+            PlayerCount = 2;
 
             Scores = new List<int>();
-            for (int i = 0; i < playerCount; i++)
+            for (int i = 0; i < PlayerCount; i++)
             {
                 Scores.Add(0);
             }

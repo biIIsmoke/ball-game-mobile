@@ -10,7 +10,11 @@ namespace Game.Repository
         List<int> Scores { get; set; }
         int ActivePlayerIndex { get; set; }
         bool IsMovable { get; set; }
-
-        void Reset(int playerCount);
+        
+        int BoardSize { get; set; }
+        int ColorCount { get; set; }
+        int PlayerCount { get; set; }
+        
+        void Reset();
     }
 }
