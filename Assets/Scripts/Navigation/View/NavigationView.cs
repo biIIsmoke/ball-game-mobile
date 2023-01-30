@@ -9,6 +9,9 @@ namespace Navigation.View
         [SerializeField] private GameObject _mainPanel;
         [SerializeField] private GameObject _inGamePanel;
         [SerializeField] private GameObject _MenuPanel;
+        [SerializeField] private Button _playersButton;
+        [SerializeField] private Button _boardSizeButton;
+        [SerializeField] private Button _colorsButton;
         [SerializeField] private Button _startButton;
         [SerializeField] private Button _menuButton;
         [SerializeField] private Button _backButton;
@@ -22,6 +25,10 @@ namespace Navigation.View
         private void OnEnable()
         {
             _startButton.onClick.AddListener(OnStartButtonClicked);
+            
+            _playersButton.onClick.AddListener(OnPlayersButtonClicked);
+            _boardSizeButton.onClick.AddListener(OnBoardSizeButtonClicked);
+            _colorsButton.onClick.AddListener(OnColorsButtonClicked);
             _menuButton.onClick.AddListener(OnMenuButtonClicked);
             _backButton.onClick.AddListener(OnBackButtonClicked);
             _restartButton.onClick.AddListener(OnRestartButtonClicked);
@@ -31,6 +38,10 @@ namespace Navigation.View
         private void OnDisable()
         {
             _startButton.onClick.RemoveListener(OnStartButtonClicked);
+            
+            _playersButton.onClick.RemoveListener(OnPlayersButtonClicked);
+            _boardSizeButton.onClick.RemoveListener(OnBoardSizeButtonClicked);
+            _colorsButton.onClick.RemoveListener(OnColorsButtonClicked);
             _menuButton.onClick.RemoveListener(OnMenuButtonClicked);
             _backButton.onClick.RemoveListener(OnBackButtonClicked);
             _restartButton.onClick.RemoveListener(OnRestartButtonClicked);
@@ -42,6 +53,21 @@ namespace Navigation.View
             OnGameStart?.Invoke();
             _mainPanel.SetActive(false);
             _inGamePanel.SetActive(true);
+        }
+
+        private void OnPlayersButtonClicked()
+        {
+            //TODO: change number of players
+        }
+
+        private void OnBoardSizeButtonClicked()
+        {
+            //TODO: change number of balls
+        }
+
+        private void OnColorsButtonClicked()
+        {
+            //TODO: change number of colors
         }
         
         private void OnMenuButtonClicked()
