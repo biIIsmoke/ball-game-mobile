@@ -57,7 +57,21 @@ namespace Game.Repository
 
         public void IncreaseColorCount()
         {
-            
+            if (ColorCount == 8)
+            {
+                ColorCount = 2;
+                return;
+            }
+
+            if ((BoardSize - 1) / 2 == (((BoardSize - 1) / 2) / (ColorCount + 1)) * (ColorCount + 1))
+            {
+                ColorCount++;
+            }
+            else
+            {
+                ColorCount++;
+                IncreaseColorCount();
+            }
         }
     }
 }
