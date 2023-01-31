@@ -9,7 +9,6 @@ namespace Game.View
         event Action<GameObject> OnFirstBallSelected;
         event Action<GameObject> OnSecondBallSelected;
 
-        void ActivatePlayers();
         void OnGameStarted();
         void OnNextButtonClicked();
         void OnFirstBallSelect(GameObject first);

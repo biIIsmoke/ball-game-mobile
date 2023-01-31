@@ -34,12 +34,19 @@ namespace Game.View
             _nextButton.onClick.RemoveListener(OnNextButtonClicked);
         }
         
-        public void ActivatePlayers()
+        private void ActivatePlayers()
         {
-            for (int i = 0; i < _gameRepository.PlayerCount; i++)
+            for (int i = 0; i < 4; i++)
             {
-                _scores[i].SetActive(true);
-                _scores[i].transform.GetChild(0).GetComponent<TMP_Text>().text = _gameRepository.Scores[i].ToString();
+                if (i < _gameRepository.PlayerCount)
+                {
+                    _scores[i].SetActive(true);
+                    _scores[i].transform.GetChild(0).GetComponent<TMP_Text>().text = _gameRepository.Scores[i].ToString();
+                }
+                else
+                {
+                    _scores[i].SetActive(false);
+                }
             }
 
             var player2 = _scores[1].transform.GetChild(0);

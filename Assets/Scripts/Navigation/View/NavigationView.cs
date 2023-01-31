@@ -1,6 +1,9 @@
 using System;
+using Game.Repository;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Navigation.View
 {
@@ -21,6 +24,18 @@ namespace Navigation.View
         public event Action OnGameStart;
         public event Action OnRestartButtonClick;
         public event Action OnMainMenuButtonClick;
+        
+        private IGameRepository _gameRepository;
+        
+        [Inject]
+        public void Construct(IGameRepository gameRepository)
+        {
+            _gameRepository = gameRepository;
+            
+            _playersButton.transform.GetChild(0).GetComponent<TMP_Text>().text = $"{_gameRepository.PlayerCount} PLAYERS";
+            _boardSizeButton.transform.GetChild(0).GetComponent<TMP_Text>().text = $"{_gameRepository.BoardSize} BALLS";
+            _colorsButton.transform.GetChild(0).GetComponent<TMP_Text>().text = $"{_gameRepository.ColorCount} COLORS";
+        }
         
         private void OnEnable()
         {
@@ -57,17 +72,20 @@ namespace Navigation.View
 
         private void OnPlayersButtonClicked()
         {
-            //TODO: change number of players
+            _gameRepository.IncreasePlayers();
+            _playersButton.transform.GetChild(0).GetComponent<TMP_Text>().text = $"{_gameRepository.PlayerCount} PLAYERS";
         }
 
         private void OnBoardSizeButtonClicked()
         {
-            //TODO: change number of balls
+            _gameRepository.IncreaseBoardSize();
+            _boardSizeButton.transform.GetChild(0).GetComponent<TMP_Text>().text = $"{_gameRepository.BoardSize} BALLS";
         }
 
         private void OnColorsButtonClicked()
         {
-            //TODO: change number of colors
+            _gameRepository.IncreaseColorCount();
+            _colorsButton.transform.GetChild(0).GetComponent<TMP_Text>().text = $"{_gameRepository.ColorCount} COLORS";
         }
         
         private void OnMenuButtonClicked()

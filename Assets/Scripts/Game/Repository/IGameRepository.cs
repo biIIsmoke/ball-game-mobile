@@ -16,5 +16,8 @@ namespace Game.Repository
         int PlayerCount { get; set; }
         
         void Reset();
+        void IncreasePlayers();
+        void IncreaseBoardSize();
+        void IncreaseColorCount();
     }
 }
