@@ -80,6 +80,7 @@ namespace Navigation.View
         {
             _gameRepository.IncreaseBoardSize();
             _boardSizeButton.transform.GetChild(0).GetComponent<TMP_Text>().text = $"{_gameRepository.BoardSize} BALLS";
+            _colorsButton.transform.GetChild(0).GetComponent<TMP_Text>().text = $"{_gameRepository.ColorCount} COLORS";
         }
 
         private void OnColorsButtonClicked()

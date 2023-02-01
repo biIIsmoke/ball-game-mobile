@@ -52,17 +52,11 @@ namespace BallGenerator.View
 
         private void PlaceBalls(float size)
         {
-            //place using size to determine positions and activate them
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
                 {
-                    int poolSize = _pool.transform.childCount;
-                    if (poolSize == 0)
-                    {
-                        return;
-                    }
-                    int index = Random.Range(0, poolSize);
+                    int index = Random.Range(0, _gameRepository.BoardSize - (i*(int)size+j));
                     GameObject ball = _pool.transform.GetChild(index).gameObject;
                     ball.transform.position = new Vector3(i-(int)(size/2),.5f,j-(int)(size/2));
                     ball.transform.SetParent(_balls.transform);
@@ -75,7 +69,7 @@ namespace BallGenerator.View
         }
         public void OnGameStarted()
         {
-            while (_pool.transform.childCount != _gameRepository.BoardSize)
+            while (_pool.transform.childCount < _gameRepository.BoardSize)
             {
                 var obj = _ballFactory.Create();
                 obj.transform.SetParent(_pool.transform);

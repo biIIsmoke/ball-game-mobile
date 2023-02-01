@@ -53,6 +53,7 @@ namespace Game.Repository
                 dimension = 3;
             }
             BoardSize = dimension * dimension;
+            ColorCount = 2;
         }
 
         public void IncreaseColorCount()
