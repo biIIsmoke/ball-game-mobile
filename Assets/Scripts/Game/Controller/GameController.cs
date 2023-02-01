@@ -76,6 +76,10 @@ namespace Game.Controller
         }
         private void OnSecondBallSelected(GameObject second)
         {
+            if (_gameRepository.FirstBall == second)
+            {
+                return;
+            }
             if ((_gameRepository.FirstBall.transform.position - second.transform.position).magnitude > 1)
             {
                 return;
