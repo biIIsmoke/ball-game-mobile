@@ -24,6 +24,7 @@ namespace Game.Controller
             _ballGeneratorView = ballGeneratorView;
             
             _navigationView.OnGameStart += OnGameStarted;
+            _gameView.RandomizeStartingPlayer += OnStartingPlayerRandomized;
             _gameView.OnNextButtonClick += OnNextButtonClicked;
             _gameView.OnFirstBallSelected += OnFirstBallSelected;
             _gameView.OnSecondBallSelected += OnSecondBallSelected;
@@ -31,7 +32,8 @@ namespace Game.Controller
 
         public void Dispose()
         {
-            _navigationView.OnGameStart += OnGameStarted;
+            _navigationView.OnGameStart -= OnGameStarted;
+            _gameView.RandomizeStartingPlayer -= OnStartingPlayerRandomized;
             _gameView.OnNextButtonClick -= OnNextButtonClicked;
             _gameView.OnFirstBallSelected -= OnFirstBallSelected;
             _gameView.OnSecondBallSelected -= OnSecondBallSelected;
@@ -41,6 +43,11 @@ namespace Game.Controller
         {
             _gameRepository.Reset();
             _gameView.OnGameStarted();
+        }
+
+        private void OnStartingPlayerRandomized()
+        {
+            _gameRepository.ActivePlayerIndex = Random.Range(0, _gameRepository.PlayerCount);
         }
         
         private void OnNextButtonClicked()

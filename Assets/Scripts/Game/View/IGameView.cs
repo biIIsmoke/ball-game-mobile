@@ -5,6 +5,7 @@ namespace Game.View
 {
     public interface IGameView
     {
+        event Action RandomizeStartingPlayer;
         event Action OnNextButtonClick;
         event Action<GameObject> OnFirstBallSelected;
         event Action<GameObject> OnSecondBallSelected;

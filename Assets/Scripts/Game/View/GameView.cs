@@ -14,6 +14,7 @@ namespace Game.View
         [SerializeField] private Button _nextButton;
         
         private IGameRepository _gameRepository;
+        public event Action RandomizeStartingPlayer;
         public event Action OnNextButtonClick;
         public event Action<GameObject> OnFirstBallSelected;
         public event Action<GameObject> OnSecondBallSelected;
@@ -42,6 +43,7 @@ namespace Game.View
                 {
                     _scores[i].SetActive(true);
                     _scores[i].transform.GetChild(0).GetComponent<TMP_Text>().text = _gameRepository.Scores[i].ToString();
+                    _scores[i].GetComponent<Image>().color = Color.white;
                 }
                 else
                 {
@@ -59,6 +61,9 @@ namespace Game.View
             {
                 player2.transform.eulerAngles = new Vector3(0, 0, 90);
             }
+
+            RandomizeStartingPlayer?.Invoke();
+            _scores[_gameRepository.ActivePlayerIndex].GetComponent<Image>().color = Color.red;
         }
         public void OnGameStarted()
         {
@@ -67,8 +72,10 @@ namespace Game.View
         }
         public void OnNextButtonClicked()
         {
+            _scores[_gameRepository.ActivePlayerIndex].GetComponent<Image>().color = Color.white;
             _gameRepository.IsMovable = true;
             OnNextButtonClick?.Invoke();
+            _scores[_gameRepository.ActivePlayerIndex].GetComponent<Image>().color = Color.red;
         }
 
         public void OnFirstBallSelect(GameObject first)
