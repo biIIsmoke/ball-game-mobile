@@ -77,6 +77,7 @@ namespace BallGenerator.View
             }
             float boardSize = Mathf.Sqrt(_gameRepository.BoardSize)/10;
             _board.transform.localScale = new Vector3(boardSize,1,boardSize);
+            _board.GetComponent<Renderer>().material.mainTextureScale = new Vector2(1.25f * boardSize, 1.25f * boardSize);
             _board.SetActive(true);
             
             ColorGenerator(_gameRepository.BoardSize, _gameRepository.ColorCount);
