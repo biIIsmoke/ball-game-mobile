@@ -57,6 +57,10 @@ namespace Ball.View
             _rigidBody.velocity = Vector3.zero;
             Vector3 currentPos = transform.position;
             transform.position = new Vector3(Mathf.RoundToInt(currentPos.x), .5f, Mathf.RoundToInt(currentPos.z));
+            if ((transform.position-_startPos).magnitude > 1)
+            {
+                transform.position = _startPos;
+            }
 
             if (transform.position != _startPos)
             {
