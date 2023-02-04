@@ -40,15 +40,8 @@ namespace Ball.View
                 return;
             }
             Vector3 currentPos = GetMousePos() - _offset;
-            if ((currentPos - _startPos).magnitude < 1)
-            {
-                _rigidBody.velocity = (currentPos - transform.position)*10;
-            }
-
-            if ((_startPos - transform.position).magnitude > 1)
-            {
-                _rigidBody.velocity = Vector3.zero;
-            }
+            
+            _rigidBody.velocity = (currentPos - transform.position)*10;
         }
 
         private void OnMouseUp()
