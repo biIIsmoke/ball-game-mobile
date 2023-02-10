@@ -2175,17 +2175,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ball Movement: Move a ball one tile per turn.
+  m_text: 'Game Setup: Use the buttons in the main menu to configure the game.
+
+
+    Ball
+    Movement: Move a ball one tile per turn.
 
     
 
-    Possible Tiles:
-    Possible moves will be shown while dragging the ball.
+    Possible Tiles: Possible
+    moves will be shown while dragging the ball.
 
     
 
-    Ball Selection:
-    Select a ball of the same color next to the one you moved to take both.
+    Ball Selection: Select
+    a ball of the same color next to the one you moved to take both.
 
     
 
