@@ -1,6 +1,5 @@
 using System;
 using BallGenerator.View;
-using Game.View;
 using Navigation.View;
 
 namespace BallGenerator.Controller

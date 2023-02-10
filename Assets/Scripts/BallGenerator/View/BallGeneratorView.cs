@@ -15,7 +15,9 @@ namespace BallGenerator.View
         [SerializeField] private GameObject _board;
         [SerializeField] private GameObject _balls;
         [SerializeField] private GameObject _pool;
-
+        
+        public event Action OnGameEnd;
+        
         private BallView.Factory _ballFactory;
         private IGameRepository _gameRepository;
         
@@ -25,16 +27,6 @@ namespace BallGenerator.View
         {
             _ballFactory = ballFactory;
             _gameRepository = gameRepository;
-        }
-
-        private void OnEnable()
-        {
-            
-        }
-
-        private void OnDisable()
-        {
-            
         }
         
         private void ColorGenerator(int size, int colorCount)
@@ -102,6 +94,13 @@ namespace BallGenerator.View
             first.SetActive(false);
             second.transform.SetParent(_pool.transform);
             second.SetActive(false);
+
+            if (_balls.transform.childCount == 1)
+            {
+                _balls.transform.GetChild(0).transform.SetParent(_pool.transform);
+                OnGameEnd?.Invoke();
+                Debug.Log("Game ended!!!!");
+            }
         }
     }
 }
