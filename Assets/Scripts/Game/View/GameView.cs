@@ -69,9 +69,11 @@ namespace Game.View
         {
             ActivatePlayers();
             _gameRepository.IsMovable = true;
+            _nextButton.gameObject.SetActive(false);
         }
         public void OnNextButtonClicked()
         {
+            _nextButton.gameObject.SetActive(false);
             _scores[_gameRepository.ActivePlayerIndex].GetComponent<Image>().color = Color.white;
             _gameRepository.IsMovable = true;
             OnNextButtonClick?.Invoke();
@@ -80,6 +82,7 @@ namespace Game.View
 
         public void OnFirstBallSelect(GameObject first)
         {
+            _nextButton.gameObject.SetActive(true);
             _gameRepository.IsMovable = false;
             OnFirstBallSelected?.Invoke(first);
         }
