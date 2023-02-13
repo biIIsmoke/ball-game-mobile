@@ -1862,6 +1862,7 @@ MonoBehaviour:
   _board: {fileID: 1085874454}
   _balls: {fileID: 871982267}
   _pool: {fileID: 1596960322}
+  _camera: {fileID: 963194227}
 --- !u!224 &903325504
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2181,25 +2182,25 @@ MonoBehaviour:
     Ball
     Movement: Move a ball one tile per turn.
 
-    
 
-    Possible Tiles: Possible
-    moves will be shown while dragging the ball.
 
-    
+    Possible Tiles: Possible moves
+    will be shown while dragging the ball.
 
-    Ball Selection: Select
-    a ball of the same color next to the one you moved to take both.
 
-    
 
-    Skipping
-    a Turn: Selecting a ball with a different color or clicking "next" skips your
-    turn.
+    Ball Selection: Select a ball of
+    the same color next to the one you moved to take both.
 
-    
 
-    Winning the Game: The player with the highest score wins.'
+
+    Skipping a Turn:
+    Selecting a ball with a different color or clicking "next" skips your turn.
+
+
+
+    Winning
+    the Game: The player with the highest score wins.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

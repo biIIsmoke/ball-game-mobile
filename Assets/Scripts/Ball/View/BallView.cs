@@ -18,10 +18,10 @@ namespace Ball.View
         private Vector3 _offset;
         
         [Inject]
-        public void Construct(IGameView gameView,
+        public void Construct(Camera camera, IGameView gameView,
             IGameRepository gameRepository)
         {
-            _camera = Camera.main;
+            _camera = camera;
             _gameView = gameView;
             _gameRepository = gameRepository;
             _placingIndicators = GameObject.FindWithTag("PlacingIndicators");
@@ -126,7 +126,7 @@ namespace Ball.View
             }
         }
 
-        public class Factory : PlaceholderFactory<BallView>
+        public class Factory : PlaceholderFactory<Camera,BallView>
         {
         }
     }

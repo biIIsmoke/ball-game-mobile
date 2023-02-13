@@ -26,6 +26,6 @@ public class GameInstaller : MonoInstaller
         Container.Bind<BallGeneratorController>().AsSingle().NonLazy();
         Container.Bind<NavigationController>().AsSingle().NonLazy();
 
-        Container.BindFactory<BallView, BallView.Factory>().FromComponentInNewPrefab(_ballPrefab);
+        Container.BindFactory<Camera, BallView, BallView.Factory>().FromComponentInNewPrefab(_ballPrefab);
     }
 }
