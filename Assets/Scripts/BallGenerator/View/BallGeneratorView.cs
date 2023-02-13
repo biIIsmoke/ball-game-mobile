@@ -16,6 +16,7 @@ namespace BallGenerator.View
         [SerializeField] private GameObject _balls;
         [SerializeField] private GameObject _pool;
         [SerializeField] private Camera _camera;
+        [SerializeField] private GameObject _placingIndicators;
         
         public event Action OnGameEnd;
         
@@ -64,7 +65,7 @@ namespace BallGenerator.View
         {
             while (_pool.transform.childCount < _gameRepository.BoardSize)
             {
-                var obj = _ballFactory.Create(_camera);
+                var obj = _ballFactory.Create(_camera, _placingIndicators);
                 obj.transform.SetParent(_pool.transform);
                 obj.gameObject.SetActive(false);
             }
@@ -100,7 +101,6 @@ namespace BallGenerator.View
             {
                 _balls.transform.GetChild(0).transform.SetParent(_pool.transform);
                 OnGameEnd?.Invoke();
-                Debug.Log("Game ended!!!!");
             }
         }
     }

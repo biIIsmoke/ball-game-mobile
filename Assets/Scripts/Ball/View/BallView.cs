@@ -1,4 +1,3 @@
-using System;
 using Game.Repository;
 using Game.View;
 using UnityEngine;
@@ -18,13 +17,15 @@ namespace Ball.View
         private Vector3 _offset;
         
         [Inject]
-        public void Construct(Camera camera, IGameView gameView,
+        public void Construct(Camera camera,
+            GameObject placingIndicators,
+            IGameView gameView,
             IGameRepository gameRepository)
         {
             _camera = camera;
             _gameView = gameView;
             _gameRepository = gameRepository;
-            _placingIndicators = GameObject.FindWithTag("PlacingIndicators");
+            _placingIndicators = placingIndicators;
         }
 
         private void OnMouseDown()
@@ -126,7 +127,7 @@ namespace Ball.View
             }
         }
 
-        public class Factory : PlaceholderFactory<Camera,BallView>
+        public class Factory : PlaceholderFactory<Camera,GameObject,BallView>
         {
         }
     }
