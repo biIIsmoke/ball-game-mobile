@@ -12,6 +12,8 @@ namespace Game.View
     {
         [SerializeField] private List<GameObject> _scores;
         [SerializeField] private Button _nextButton;
+        [SerializeField] private Sprite _bigLightBlue;
+        [SerializeField] private Sprite _bigBlue;
         
         private IGameRepository _gameRepository;
         public event Action RandomizeStartingPlayer;
@@ -43,7 +45,7 @@ namespace Game.View
                 {
                     _scores[i].SetActive(true);
                     _scores[i].transform.GetChild(0).GetComponent<TMP_Text>().text = _gameRepository.Scores[i].ToString();
-                    _scores[i].GetComponent<Image>().color = Color.white;
+                    _scores[i].GetComponent<Image>().sprite = _bigLightBlue;
                 }
                 else
                 {
@@ -63,7 +65,7 @@ namespace Game.View
             }
 
             RandomizeStartingPlayer?.Invoke();
-            _scores[_gameRepository.ActivePlayerIndex].GetComponent<Image>().color = Color.red;
+            _scores[_gameRepository.ActivePlayerIndex].GetComponent<Image>().sprite = _bigBlue;
         }
         public void OnGameStarted()
         {
@@ -74,10 +76,10 @@ namespace Game.View
         public void OnNextButtonClicked()
         {
             _nextButton.gameObject.SetActive(false);
-            _scores[_gameRepository.ActivePlayerIndex].GetComponent<Image>().color = Color.white;
+            _scores[_gameRepository.ActivePlayerIndex].GetComponent<Image>().sprite = _bigLightBlue;
             _gameRepository.IsMovable = true;
             OnNextButtonClick?.Invoke();
-            _scores[_gameRepository.ActivePlayerIndex].GetComponent<Image>().color = Color.red;
+            _scores[_gameRepository.ActivePlayerIndex].GetComponent<Image>().sprite = _bigBlue;
         }
 
         public void OnFirstBallSelect(GameObject first)
