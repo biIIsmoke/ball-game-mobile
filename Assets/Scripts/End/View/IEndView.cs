@@ -5,5 +5,6 @@ namespace End.View
     public interface IEndView
     {
         void OnGameEnded();
+        void ResetEnd();
     }
 }

@@ -71,7 +71,6 @@ namespace Game.Controller
             if (_gameRepository.FirstBall == null)
             {
                 _gameRepository.FirstBall = first;
-                Debug.Log($"First Ball Selected has a color {first.GetComponent<Renderer>().material.color}");
             }
         }
         private void OnSecondBallSelected(GameObject second)
@@ -87,7 +86,6 @@ namespace Game.Controller
             if (_gameRepository.FirstBall != null && _gameRepository.SecondBall == null && second != _gameRepository.FirstBall)
             {
                 _gameRepository.SecondBall = second;
-                Debug.Log($"Second Ball Selected has a color {second.GetComponent<Renderer>().material.color}");
             }
 
             CompareBalls();
@@ -101,6 +99,10 @@ namespace Game.Controller
                 _ballGeneratorView.HideBalls(_gameRepository.FirstBall, _gameRepository.SecondBall);
                 _gameRepository.Scores[_gameRepository.ActivePlayerIndex]++;
                 _gameView.UpdateScoreText();
+                if (_ballGeneratorView.IsGameEnded())
+                {
+                    return;
+                }
                 _gameView.OnNextButtonClicked();
             }
             else

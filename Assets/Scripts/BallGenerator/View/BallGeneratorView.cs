@@ -96,12 +96,18 @@ namespace BallGenerator.View
             first.SetActive(false);
             second.transform.SetParent(_pool.transform);
             second.SetActive(false);
+        }
 
+        public bool IsGameEnded()
+        {
             if (_balls.transform.childCount == 1)
             {
                 _balls.transform.GetChild(0).transform.SetParent(_pool.transform);
                 OnGameEnd?.Invoke();
+                return true;
             }
+
+            return false;
         }
     }
 }

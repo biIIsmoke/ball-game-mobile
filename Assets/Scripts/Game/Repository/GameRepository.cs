@@ -10,8 +10,6 @@ namespace Game.Repository
         public List<int> Scores { get; set; }
         public int ActivePlayerIndex { get; set; }
         public bool IsMovable { get; set; }
-        
-        //TODO: modify these to remember stuff
         public int BoardSize { get; set; }
         public int ColorCount { get; set; }
         public int PlayerCount { get; set; }

@@ -9,5 +9,6 @@ namespace BallGenerator.View
         void OnGameStarted();
         void OnMainMenuButtonClicked();
         void HideBalls(GameObject first, GameObject second);
+        bool IsGameEnded();
     }
 }
