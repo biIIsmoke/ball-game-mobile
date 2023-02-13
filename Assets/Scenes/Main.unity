@@ -1243,7 +1243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainPanel: {fileID: 19688406}
   _inGamePanel: {fileID: 957433314}
-  _MenuPanel: {fileID: 774155297}
+  _menuPanel: {fileID: 774155297}
+  _infoPanel: {fileID: 2060493547}
   _playersButton: {fileID: 1734532738}
   _boardSizeButton: {fileID: 1128488377}
   _colorsButton: {fileID: 1179904202}
@@ -1252,6 +1253,8 @@ MonoBehaviour:
   _backButton: {fileID: 837627784}
   _restartButton: {fileID: 1339809677}
   _mainMenuButton: {fileID: 1023871333}
+  _infoButton: {fileID: 1393832191}
+  _infoBackButton: {fileID: 2119312504}
 --- !u!224 &618851432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3881,19 +3884,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1393832192}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2060493547}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1393832192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5472,19 +5463,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119312505}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2060493547}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2119312505
 MonoBehaviour:
   m_ObjectHideFlags: 0

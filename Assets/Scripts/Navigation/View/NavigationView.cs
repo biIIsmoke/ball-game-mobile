@@ -11,7 +11,8 @@ namespace Navigation.View
     {
         [SerializeField] private GameObject _mainPanel;
         [SerializeField] private GameObject _inGamePanel;
-        [SerializeField] private GameObject _MenuPanel;
+        [SerializeField] private GameObject _menuPanel;
+        [SerializeField] private GameObject _infoPanel;
         [SerializeField] private Button _playersButton;
         [SerializeField] private Button _boardSizeButton;
         [SerializeField] private Button _colorsButton;
@@ -20,6 +21,8 @@ namespace Navigation.View
         [SerializeField] private Button _backButton;
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _mainMenuButton;
+        [SerializeField] private Button _infoButton;
+        [SerializeField] private Button _infoBackButton;
         
         public event Action OnGameStart;
         public event Action OnRestartButtonClick;
@@ -48,6 +51,8 @@ namespace Navigation.View
             _backButton.onClick.AddListener(OnBackButtonClicked);
             _restartButton.onClick.AddListener(OnRestartButtonClicked);
             _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
+            _infoButton.onClick.AddListener(OnInfoButtonClicked);
+            _infoBackButton.onClick.AddListener(OnInfoBackButtonClicked);
         }
 
         private void OnDisable()
@@ -61,12 +66,15 @@ namespace Navigation.View
             _backButton.onClick.RemoveListener(OnBackButtonClicked);
             _restartButton.onClick.RemoveListener(OnRestartButtonClicked);
             _mainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
+            _infoButton.onClick.RemoveListener(OnInfoButtonClicked);
+            _infoBackButton.onClick.RemoveListener(OnInfoBackButtonClicked);
         }
         
         public void OnStartButtonClicked()
         {
             OnGameStart?.Invoke();
             _mainPanel.SetActive(false);
+            _infoButton.gameObject.SetActive(false);
             _inGamePanel.SetActive(true);
         }
 
@@ -91,26 +99,39 @@ namespace Navigation.View
         
         private void OnMenuButtonClicked()
         {
-            _MenuPanel.SetActive(true);
+            _menuPanel.SetActive(true);
         }
         
         private void OnBackButtonClicked()
         {
-            _MenuPanel.SetActive(false);
+            _menuPanel.SetActive(false);
         }
         
         private void OnRestartButtonClicked()
         {
-            _MenuPanel.SetActive(false);
+            _menuPanel.SetActive(false);
             OnRestartButtonClick?.Invoke();
         }
         
         private void OnMainMenuButtonClicked()
         {
             OnMainMenuButtonClick?.Invoke();
-            _MenuPanel.SetActive(false);
+            _menuPanel.SetActive(false);
             _inGamePanel.SetActive(false);
             _mainPanel.SetActive(true);
+            _infoButton.gameObject.SetActive(true);
+        }
+
+        private void OnInfoButtonClicked()
+        {
+            _infoPanel.SetActive(true);
+            _infoButton.gameObject.SetActive(false);
+        }
+
+        private void OnInfoBackButtonClicked()
+        {
+            _infoPanel.SetActive(false);
+            _infoButton.gameObject.SetActive(true);
         }
     }
 }
